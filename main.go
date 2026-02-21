@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/jrmygp/user-management/config"
 	"github.com/jrmygp/user-management/controllers"
+	usergrpc "github.com/jrmygp/user-management/grpc"
 	userRepo "github.com/jrmygp/user-management/repositories/user"
 	userService "github.com/jrmygp/user-management/services/user"
 )
@@ -15,6 +16,8 @@ func main() {
 	userController := controllers.NewUserController(userService)
 
 	router := config.NewRouter(userController)
+
+	go usergrpc.StartGRPC(userService)
 
 	router.Run(":8080")
 }
