@@ -11,6 +11,7 @@ type User struct {
 	ID       int
 	Username string `gorm:"unique"`
 	Password string
+	Balance  int
 }
 
 type CheckIn struct {

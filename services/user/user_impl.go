@@ -101,3 +101,19 @@ func (s *service) CheckOutUser(checkInID int) (models.CheckIn, error) {
 
 	return updatedCheckIn, nil
 }
+
+func (s *service) EditUser(userForm requests.EditUserRequest) (models.User, error) {
+	user, err := s.repository.GetUserByID(userForm.UserId)
+	if err != nil {
+		return models.User{}, err
+	}
+
+	user.Balance += userForm.BalanceDelta
+
+	updatedUser, err := s.repository.EditUser(user)
+	if err != nil {
+		return models.User{}, err
+	}
+
+	return updatedUser, nil
+}

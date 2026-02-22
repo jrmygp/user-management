@@ -23,6 +23,7 @@ func convertUserResponse(o models.User) responses.UserResponse {
 	return responses.UserResponse{
 		ID:       o.ID,
 		Username: o.Username,
+		Balance:  o.Balance,
 	}
 }
 

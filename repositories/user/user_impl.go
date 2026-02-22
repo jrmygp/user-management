@@ -35,6 +35,11 @@ func (r *repository) CreateUser(user models.User) (models.User, error) {
 	return user, err
 }
 
+func (r *repository) EditUser(user models.User) (models.User, error) {
+	err := r.db.Save(&user).Error
+	return user, err
+}
+
 func (r *repository) GetUserByID(id int) (models.User, error) {
 	var user models.User
 	err := r.db.First(&user, id).Error
