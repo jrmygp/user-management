@@ -1,6 +1,8 @@
 package models
 
 import (
+	"time"
+
 	"gorm.io/gorm"
 )
 
@@ -9,4 +11,14 @@ type User struct {
 	ID       int
 	Username string `gorm:"unique"`
 	Password string
+}
+
+type CheckIn struct {
+	gorm.Model
+	ID          int
+	UserID      int
+	OrderBookID int
+	CheckInAt   time.Time
+	CheckOutAt  time.Time
+	Status      string
 }

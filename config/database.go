@@ -29,7 +29,7 @@ func DatabaseConnection() *gorm.DB {
 		panic(err)
 	}
 
-	db.AutoMigrate(&models.User{})
+	db.AutoMigrate(&models.User{}, &models.CheckIn{})
 
 	return db
 }

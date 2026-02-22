@@ -40,3 +40,19 @@ func (r *repository) GetUserByID(id int) (models.User, error) {
 	err := r.db.First(&user, id).Error
 	return user, err
 }
+
+func (r *repository) CreateCheckIn(checkIn models.CheckIn) (models.CheckIn, error) {
+	err := r.db.Create(&checkIn).Error
+	return checkIn, err
+}
+
+func (r *repository) UpdateCheckIn(checkIn models.CheckIn) (models.CheckIn, error) {
+	err := r.db.Save(&checkIn).Error
+	return checkIn, err
+}
+
+func (r *repository) GetCheckInByID(id int) (models.CheckIn, error) {
+	var checkIn models.CheckIn
+	err := r.db.First(&checkIn, id).Error
+	return checkIn, err
+}
